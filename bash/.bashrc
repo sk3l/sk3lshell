@@ -9,7 +9,7 @@ set -o vi
 
 #PS1='[\u@\h \W]\$ '
 
-export PS1='\[\e[1;31m\]\u@\h \[\e[1;37m\]\w $ \[\e[0m\]'
+export PS1='\[\e[1;36m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\w $ \[\e[m\]'
 
 export TERM=xterm-256color
 
