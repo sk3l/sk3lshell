@@ -35,6 +35,10 @@ alias fnd="sudo find"
 # systemd aliases
 alias sctl="sudo systemctl"
 alias dlg="journalctl -b"
+alias fnd="sudo find"
+
+# Dir colors
+eval $(dircolors)
 
 alias sshk="ssh-keygen"
 
