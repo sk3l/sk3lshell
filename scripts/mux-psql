@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo systemctl start postgresql
+
+tmux -2 new-session -s PSQL -d 
+tmux -2 new-window -n PSQL-main -c ~/website/src/skelonl_db/code vim
+tmux split-window -h
+tmux selectp -t 2
+tmux split-window -v psql -U skelonl_admin -h 10.45.0.10 -d skelonl
+tmux selectp -t 1 
+tmux attach-session -t PSQL
+

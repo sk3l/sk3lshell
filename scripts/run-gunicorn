@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#source /opt/rh/rh-postgresql94/enable
+#source /opt/rh/rh-python34/enable
+#source /opt/rh/rh-python34/root/usr/bin/virtualenvwrapper.sh
+. /usr/local/bin/virtualenvwrapper.sh
+workon skelonl
+
+inipath="/home/mskelton/Code/sk3l/web/skelton.onl/src/skelonl-blog/code/development.ini"
+pypath="/home/mskelton/Code/sk3l/web/skelton.onl/src/skelonl-blog/code/blog"
+
+export PYTHONPATH="$pypath"
+gunicorn --paste $inipath 
+#--pid /var/run/gunicorn/pid
+#gunicorn --paste development.ini 

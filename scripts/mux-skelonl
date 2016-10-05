@@ -1,0 +1,23 @@
+#!/bin/bash
+
+tmux new-session -s SKELONL -d 
+TERM=screen-256color tmux -2 new-window -n SKELONL-main -c /home/mskelton/Code/sk3l/repos/skelton.onl/src vim
+tmux split-window -h docker start -ia skelonldb
+
+tmux select-pane -t 2 
+tmux split-window -v docker start -ia skelonlblog 
+
+tmux select-pane -t 3
+tmux split-window -v docker start -ia skelonlwww
+
+tmux select-pane -t 4
+tmux split-window -v
+
+HEIGHT=$(($(tmux display-message -t 1 -p '#{pane_height}') / 4))
+tmux resize-pane -t 2 -y $HEIGHT
+tmux resize-pane -t 3 -y $HEIGHT
+tmux resize-pane -t 4 -y $HEIGHT
+tmux resize-pane -t 5 -y $HEIGHT
+
+tmux attach-session -t SKELONL
+

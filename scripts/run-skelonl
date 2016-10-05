@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# start DB container
+echo "Starting skelonl Postgres container..."
+docker start skelonldb
+# start Pyramid container
+echo "Starting skelonl Python container..."
+docker start skelonlblog
+# start Nginx container
+echo "Starting skelonl Nginx container..."
+docker start skelonlwww
+echo "skelonl is up!"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+tmux -2 new-session -s SK3L3TAL -d 
+tmux -2 new-window -n SK3L3TAL-main -c /home/mskelton/Code/sk3l/repos/sk3l3tal/src vim
+tmux split-window -v -p 25 -c /home/mskelton/Code/sk3l/repos/sk3l3tal/build
+tmux selectp -t 2
+tmux split-window -h -c /home/mskelton/Code/sk3l/repos/sk3l3tal/src vifm ./ -c view
+tmux selectp -t 1 
+tmux attach-session -t SK3L3TAL
+
