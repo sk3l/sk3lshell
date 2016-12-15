@@ -1,0 +1,19 @@
+#
+# ~/.bash_local for Ubuntu laptop
+#
+
+# Python virtual env
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Code/M45
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
+
+# package manager aliases
+alias upm="sudo apt"
+
+# tmux aliases
+alias tmxk="tmux kill-session"
+alias tmxl="tmux list-session"
+
+# docker aliases
+alias dckps='docker ps -a --format "table {{.Names}}\t{{.Command}}\t{{.Image}}\t{{.Status}}"'
