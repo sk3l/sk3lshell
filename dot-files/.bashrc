@@ -14,13 +14,14 @@ export EDITOR=vim
 
 # basic command aliases
 echo "Sourcing basic command aliases..."
-alias  edt="sudo vim"
-alias  lsa="sudo ls -lah --color=auto"
-alias  lsd="sudo ls -lhd --color=auto */"
-alias  lsl="sudo ls -lh  --color=auto"
-alias psef="ps -ef | grep"
-alias  prt="sudo cat"
-alias  fnd="sudo find"
+alias    edt="sudo vim"
+alias    fnd="sudo find"
+alias    lsa="sudo ls -lah --color=auto"
+alias    lsd="sudo ls -lhd --color=auto */"
+alias    lsl="sudo ls -lh  --color=auto"
+alias   psef="ps -ef | grep"
+alias    prt="sudo cat"
+alias  ptree="sudo pstree"
 
 # systemd aliases
 systemctl > /dev/null 2>&1
