@@ -10,6 +10,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # package manager aliases
 alias upm="sudo apt"
+alias upd="sudo apt update"
+alias upl="sudo apt list --upgradable"
+alias upg="sudo apt upgrade"
+
 
 # tmux aliases
 alias tmxk="tmux kill-session"
