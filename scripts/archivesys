@@ -1,0 +1,105 @@
+#!/bin/bash
+
+###############################################################################
+# archivesys - 
+# A simple backup script using rsync to copy data to USB drive.
+# 1 full & 4 incremental backups are created.
+
+# Redirect stdout into the tee command
+exec > >(sudo tee -i /var/log/backuplog.txt) 2>&1
+
+echo "*************************************************************************"
+echo "archivesys - panther $(date)"
+echo "*************************************************************************"
+
+# Base backup paths
+BAKDRIV="/dev/sda1"
+BAKROOT="/home/mskelton/mnt/usb"
+BAKDEST="$BAKROOT/backup/panther"
+
+# Backup version path
+BAKFULL="panther_full"
+BAKSNP1="panther_snap_1"
+BAKSNP2="panther_snap_2"
+BAKSNP3="panther_snap_3"
+
+# Incremental link source (empty for full backup)
+BAKROOTLNK=""
+
+# Backup source dir
+BAKROOTSRC="/"
+
+# Backup target dir 
+BAKROOTTARG="$BAKDEST/$BAKFULL"
+
+EXCFILE="$BAKROOT/backup/bckexclusions"
+
+BCKCMD="sudo rsync -aXh --sparse --delete --info=progress2"
+
+echo "==> Beginning backup process at $(date)"
+
+if [ ! -e $BAKDEST ]; then
+
+   echo "==> USB backup target not found, attempting to mount USB."
+   sudo mount $BAKDRIV $BAKROOT 
+
+   if [ $? != 0 ]; then
+      echo "!!! Could not mount backup drive, exiting"
+      exit 1
+   fi
+fi
+
+# Look for previous backup target, rotate if exists
+
+echo "==> Looking for previous backups"
+
+if [ -d "$BAKDEST/$BAKSNP3" ]; then
+   echo "==> Found snapshot #3 backup, archiving backup set &  performing new full backup"
+   BAKARCH="$BAKDEST/panther_bakset_$(date +%Y%m%d)"
+   mkdir $BAKARCH 
+   sudo mv "$BAKDEST/$BAKFULL" "$BAKARCH" #> /dev/null 2>&1
+   sudo mv "$BAKDEST/$BAKSNP1" "$BAKARCH" #> /dev/null 2>&1 
+   sudo mv "$BAKDEST/$BAKSNP2" "$BAKARCH" #> /dev/null 2>&1 
+   sudo mv "$BAKDEST/$BAKSNP3" "$BAKARCH" #> /dev/null 2>&1
+
+   sudo tar -zcf "panther_bakset_$(date +%Y%m%d).tar.gz"  $BAKARCH 
+
+   mkdir "$BAKDEST/$BAKFULL"
+
+elif [ -d "$BAKDEST/$BAKSNP2" ]; then
+   echo "==> Found snapshot #2 backup, performing incremental snapshot #3"
+   BAKROOTLNK="--link-dest=$BAKDEST/$BAKSNP2"
+   BAKROOTTARG="$BAKDEST/$BAKSNP3"
+
+
+elif [ -d "$BAKDEST/$BAKSNP1" ]; then
+   echo "==> Found snapshot #1 backup, performing incremental snapshot #2"
+   BAKROOTLNK="--link-dest=$BAKDEST/$BAKSNP1"
+   BAKROOTTARG="$BAKDEST/$BAKSNP2"
+
+elif [ -d "$BAKDEST/$BAKFULL" ]; then
+   echo "==> Found full backup, performing incremental snapshot #1"
+   BAKROOTLNK="--link-dest=$BAKDEST/$BAKFULL -H"
+   BAKROOTTARG="$BAKDEST/$BAKSNP1"
+
+else
+   echo "==> No previous backups found, performing full backup"
+   mkdir "$BAKDEST/$BAKFULL"
+fi
+
+# Perform the actual backup 
+
+echo "==> Backing up from path $BAKROOTSRC to path $BAKROOTTARG "
+$BCKCMD --exclude-from=$EXCFILE $BAKROOTLNK $BAKROOTSRC $BAKROOTTARG 
+
+# Bundle backup dirs into archive
+#sudo tar -zcf $BAKDEST/$BAKFILE $BAKDEST/bckroot $BAKLINK $BAKDEST/bckvar $BAKDEST/$BAKTARG/home
+#if [ $? != 0 ]; then
+#   echo "??? Could not archive backup dirs"
+#fi
+
+# Cleanup
+#rm -rf ./TODEL  > /dev/null 2>&1
+
+echo "==> Backup process complete at $(date)"
+exit 0
