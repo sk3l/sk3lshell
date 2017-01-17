@@ -12,6 +12,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 alias upm="sudo apt"
 alias upd="sudo apt update"
 alias upl="sudo apt list --upgradable"
+alias upf="sudo apt-file list"
 alias upg="sudo apt upgrade"
 
 
