@@ -20,7 +20,7 @@ alias    lsa="sudo ls -lah --color=auto"
 alias    lsd="sudo ls -lhd --color=auto */"
 alias    lsl="sudo ls -lh  --color=auto"
 alias    lsx="sudo ls -lhX --color=auto"
-alias   psef="ps -ef | grep"
+alias   psef="ps -ef | grep -v 'grep' | grep"
 alias    prt="sudo cat"
 alias  ptree="sudo pstree"
 
