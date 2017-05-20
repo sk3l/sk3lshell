@@ -15,6 +15,8 @@ alias upl="sudo apt list --upgradable"
 alias upf="sudo apt-file list"
 alias upg="sudo apt upgrade"
 
+# snappy
+alias snp="sudo snap"
 
 # tmux aliases
 alias tmxk="tmux kill-session"
@@ -22,3 +24,6 @@ alias tmxl="tmux list-session"
 
 # docker aliases
 alias dckps='docker ps -a --format "table {{.Names}}\t{{.Command}}\t{{.Image}}\t{{.Status}}"'
+
+# chef 
+eval "$(chef shell-init bash)"
