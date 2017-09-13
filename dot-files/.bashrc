@@ -14,6 +14,7 @@ export EDITOR=vim
 
 # basic command aliases
 echo "Sourcing basic command aliases..."
+alias   diff="diff -u --color=auto"
 alias    edt="sudo vim"
 alias    fnd="sudo find"
 alias    lsa="sudo ls -lah --color=auto"
