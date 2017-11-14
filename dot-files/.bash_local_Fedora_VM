@@ -1,0 +1,19 @@
+#
+# ~/.bash_local for work Fedora laptop
+#
+
+# Python virtual env
+#export WORKON_HOME=$HOME/.virtualenvs
+#export PROJECT_HOME=$HOME/Code/M45
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#source /usr/local/bin/virtualenvwrapper.sh
+
+# package manager aliases for Fedora
+alias fpm="sudo dnf"
+alias fpg="sudo dnf upgrade"
+alias fpl="sudo dnf list"
+
+# tmux aliases
+alias tmxk="tmux kill-session"
+alias tmxl="tmux list-session"
+
