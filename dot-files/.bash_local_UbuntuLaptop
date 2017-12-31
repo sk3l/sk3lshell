@@ -26,4 +26,4 @@ alias tmxl="tmux list-session"
 alias dckps='docker ps -a --format "table {{.Names}}\t{{.Command}}\t{{.Image}}\t{{.Status}}"'
 
 # chef 
-eval "$(chef shell-init bash)"
+#eval "$(chef shell-init bash)"
