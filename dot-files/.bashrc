@@ -36,6 +36,19 @@ fi
 # Dir colors
 eval $(dircolors)
 
+git --version > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+   echo "Found Git on system; setting Git aliases..."
+   alias gitb="git branch -va"
+   alias gitc="git checkout"
+   alias gitd="git diff"
+   alias gitf="git fetch"
+   alias gith="git --help"
+   alias gitl="git log"
+   alias gits="git status"
+   alias gitr="git remote -v"
+fi
+
 # TO DO - source misc utilities, if they exist, or do this in .bash_local
 # alias sshk="ssh-keygen"
 # alias luks="sudo cryptsetup"
