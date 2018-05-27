@@ -36,6 +36,7 @@ fi
 # Dir colors
 eval $(dircolors)
 
+#Git aliases
 git --version > /dev/null 2>&1
 if [ $? -eq 0 ]; then
    echo "Found Git on system; setting Git aliases..."
@@ -47,6 +48,15 @@ if [ $? -eq 0 ]; then
    alias gitl="git log"
    alias gits="git status"
    alias gitr="git remote -v"
+fi
+
+# tmux aliases
+tmux -V > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+   echo "Found tmux on system; setting systemd aliases..."
+   alias tmuxl="tmux list-sessions"
+   alias tmuxa="tmux attach"
+   alias tmuxk="tmux kill-session"
 fi
 
 # TO DO - source misc utilities, if they exist, or do this in .bash_local
