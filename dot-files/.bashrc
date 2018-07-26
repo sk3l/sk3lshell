@@ -8,7 +8,7 @@
 set -o vi
 
 # Custom shell prompt; will show as user@hostname
-export PS1='\[\e[1;36m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\w $ \[\e[m\]'
+export PS1='\[\e[1;36m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
 export TERM=xterm-256color
 export EDITOR=vim
 
