@@ -54,9 +54,10 @@ fi
 tmux -V > /dev/null 2>&1
 if [ $? -eq 0 ]; then
    echo "Found tmux on system; setting systemd aliases..."
-   alias tmuxl="tmux list-sessions"
-   alias tmuxa="tmux attach"
-   alias tmuxk="tmux kill-session"
+   alias tmxa="tmux attach -t"
+   alias tmxl="tmux list-sessions"
+   alias tmxn="tmux new-session -s"
+   alias tmxk="tmux kill-session"
 fi
 
 # TO DO - source misc utilities, if they exist, or do this in .bash_local
