@@ -1,0 +1,13 @@
+#
+# ~/.bash_local for RHEL
+#
+
+# Override PS1 prompt (red host color)
+export PS1="\[\e[1m\e[38;5;44m\]\u\[\e[m\]@\[\e[1m\e[38;5;197m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]"
+
+# package manager aliases
+alias ypm="sudo yum"
+alias ypd="sudo yum update"
+alias ypg="sudo yum upgrade"
+
+

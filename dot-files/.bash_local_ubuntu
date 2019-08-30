@@ -1,6 +1,10 @@
 #
-# ~/.bash_local for Ubuntu laptop
+# ~/.bash_local for Ubuntu
 #
+
+# Override PS1 prompt (purple host color)
+export PS1='\[\e[1;36m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
+
 
 # Python virtual env
 export WORKON_HOME=$HOME/.virtualenvs
@@ -15,15 +19,3 @@ alias upl="sudo apt list --upgradable"
 alias upf="sudo apt-file list"
 alias upg="sudo apt upgrade"
 
-# snappy
-alias snp="sudo snap"
-
-# tmux aliases
-alias tmxk="tmux kill-session"
-alias tmxl="tmux list-session"
-
-# docker aliases
-alias dckps='docker ps -a --format "table {{.Names}}\t{{.Command}}\t{{.Image}}\t{{.Status}}"'
-
-# chef 
-#eval "$(chef shell-init bash)"

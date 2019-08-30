@@ -7,8 +7,6 @@
 
 set -o vi
 
-# Custom shell prompt; will show as user@hostname
-export PS1='\[\e[1;36m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
 export TERM=xterm-256color
 export EDITOR=vim
 
@@ -27,7 +25,7 @@ alias  ptree="sudo pstree"
 
 # systemd aliases
 systemctl > /dev/null 2>&1
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]];then
    echo "Found systemd on system; setting systemd aliases..."
    alias sctl="sudo systemctl"
    alias jctl="sudo journalctl -b"
@@ -38,7 +36,7 @@ eval $(dircolors)
 
 #Git aliases
 git --version > /dev/null 2>&1
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]];then
    echo "Found Git on system; setting Git aliases..."
    alias gitb="git branch -va"
    alias gitc="git checkout"
@@ -52,7 +50,7 @@ fi
 
 # tmux aliases
 tmux -V > /dev/null 2>&1
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]];then
    echo "Found tmux on system; setting systemd aliases..."
    alias tmxa="tmux attach -t"
    alias tmxl="tmux list-sessions"
@@ -64,8 +62,25 @@ fi
 # alias sshk="ssh-keygen"
 # alias luks="sudo cryptsetup"
 
-# Source local env if present
-if [ -f ~/.bash_local ]; then
+# customize $PATH (add .local)
+if [[ -d $HOME/.local/bin ]]; then 
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Source distro-specific env, if present
+if [[ -f ~/.bash_local_ubuntu ]]; then
+   echo "Found Ubuntu env override; sourcing it..."
+   . ~/.bash_local_ubuntu
+elif [[ -f ~/.bash_local_fedora ]];then
+   echo "Found Fedora env override; sourcing it..."
+   . ~/.bash_local_fedora
+elif [[ -f ~/.bash_local_rhel ]];then
+   echo "Found RHEL env override; sourcing it..."
+   . ~/.bash_local_rhel
+fi
+
+# Source customized env if present
+if [[ -f ~/.bash_local ]];then
    echo "Found local system env override; sourcing it..."
    . ~/.bash_local
 fi
