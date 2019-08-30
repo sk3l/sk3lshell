@@ -58,7 +58,7 @@ if [[ $? -eq 0 ]];then
    alias tmxk="tmux kill-session"
 fi
 
-# TO DO - source misc utilities, if they exist, or do this in .bash_local
+# TO DO - source misc utilities, if they exist, or do this in .bashrc_local
 # alias sshk="ssh-keygen"
 # alias luks="sudo cryptsetup"
 
@@ -68,21 +68,21 @@ if [[ -d $HOME/.local/bin ]]; then
 fi
 
 # Source distro-specific env, if present
-if [[ -f ~/.bash_local_ubuntu ]]; then
+if [[ -f ~/.bashrc_local_ubuntu ]]; then
    echo "Found Ubuntu env override; sourcing it..."
-   . ~/.bash_local_ubuntu
-elif [[ -f ~/.bash_local_fedora ]];then
+   . ~/.bashrc_local_ubuntu
+elif [[ -f ~/.bashrc_local_fedora ]];then
    echo "Found Fedora env override; sourcing it..."
-   . ~/.bash_local_fedora
-elif [[ -f ~/.bash_local_rhel ]];then
+   . ~/.bashrc_local_fedora
+elif [[ -f ~/.bashrc_local_rhel ]];then
    echo "Found RHEL env override; sourcing it..."
-   . ~/.bash_local_rhel
+   . ~/.bashrc_local_rhel
 fi
 
 # Source customized env if present
-if [[ -f ~/.bash_local ]];then
+if [[ -f ~/.bashrc_local ]];then
    echo "Found local system env override; sourcing it..."
-   . ~/.bash_local
+   . ~/.bashrc_local
 fi
 
 echo "Environment setup complete"
