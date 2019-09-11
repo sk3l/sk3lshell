@@ -5,6 +5,8 @@
 # Override PS1 prompt (green host color)
 export PS1="\[\e[1m\e[38;5;44m\]\u\[\e[m\]@\[\e[1m\e[38;5;28m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]"
 
+export LSCOLORS=ExFxCxDxBxegedabagaced
+
 # override ls aliases for Mac
 alias    lsa="sudo ls -lahG"
 alias    lsd="sudo ls -lhdG */"
