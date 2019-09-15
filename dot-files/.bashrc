@@ -78,6 +78,9 @@ elif [[ -f ~/.bashrc_local_fedora ]];then
 elif [[ -f ~/.bashrc_local_rhel ]];then
    echo "Found RHEL env override; sourcing it..."
    . ~/.bashrc_local_rhel
+elif [[ -f ~/.bashrc_local_centos ]];then
+   echo "Found CentOS env override; sourcing it..."
+   . ~/.bashrc_local_centos
 fi
 
 # Source customized env if present
