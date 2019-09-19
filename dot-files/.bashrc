@@ -43,7 +43,7 @@ if [[ $? -eq 0 ]];then
    alias gitd="git diff"
    alias gitf="git fetch"
    alias gith="git --help"
-   alias gitg="git log --graph --all"
+   alias gitg="git log --graph --all --decorate"
    alias gitl="git log"
    alias gits="git status"
    alias gitr="git remote -v"
