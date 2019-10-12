@@ -10,7 +10,9 @@ set -o vi
 export TERM=xterm-256color
 export EDITOR=vim
 
-# basic command aliases
+###############################################################################
+#   Shell command aliases
+###############################################################################
 echo "Sourcing basic command aliases..."
 alias   diff="diff -u --color=auto"
 alias    edt="sudo vim"
@@ -22,6 +24,14 @@ alias    lsx="sudo ls -lhX --color=auto"
 alias   psef="ps -ef | grep -v 'grep' | grep"
 alias    prt="sudo cat"
 alias  ptree="sudo pstree"
+
+###############################################################################
+#   Shell functions
+###############################################################################
+function entitle() {
+    echo -ne "\033]0;$1\a"
+}
+export -f entitle
 
 # systemd aliases
 systemctl > /dev/null 2>&1
@@ -64,7 +74,7 @@ fi
 # alias luks="sudo cryptsetup"
 
 # customize $PATH (add .local)
-if [[ -d $HOME/.local/bin ]]; then 
+if [[ -d $HOME/.local/bin ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
