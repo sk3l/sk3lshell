@@ -3,7 +3,7 @@
 #
 
 # Override PS1 prompt (purple host color)
-export PS1='\[\e[1;36m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
+export PS1='\[\e[1m;\e\[38;5;46m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
 
 
 # Python virtual env
