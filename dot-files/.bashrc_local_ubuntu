@@ -5,12 +5,11 @@
 # Override PS1 prompt (purple host color)
 export PS1='\[\e[1m;\e\[38;5;46m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
 
-
-# Python virtual env
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Code/M45
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+# Add $HOME/.local/bin to PATH, if not already present
+if [[ -d $HOME/.local/bin ]] && [[ $(echo $PATH | grep -c "$HOME/.local/bin") -eq "0" ]]; then
+    echo -e "Adding .local/bin to PATH"
+    export PATH="$PATH:$HOME/.local/bin"
+fi
 
 # package manager aliases
 alias upm="sudo apt"

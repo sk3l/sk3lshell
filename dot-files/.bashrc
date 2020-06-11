@@ -62,7 +62,7 @@ fi
 # tmux aliases
 tmux -V > /dev/null 2>&1
 if [[ $? -eq 0 ]];then
-   echo "Found tmux on system; setting systemd aliases..."
+   echo "Found tmux on system; setting tmux aliases..."
    alias tmxa="tmux attach -t"
    alias tmxl="tmux list-sessions"
    alias tmxn="tmux new-session -s"
@@ -72,11 +72,6 @@ fi
 # TO DO - source misc utilities, if they exist, or do this in .bashrc_local
 # alias sshk="ssh-keygen"
 # alias luks="sudo cryptsetup"
-
-# customize $PATH (add .local)
-if [[ -d $HOME/.local/bin ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
 
 # Source distro-specific env, if present
 if [[ -f ~/.bashrc_local_ubuntu ]]; then
@@ -98,5 +93,4 @@ if [[ -f ~/.bashrc_local ]];then
    echo "Found local system env override; sourcing it..."
    . ~/.bashrc_local
 fi
-
 echo "Environment setup complete"
