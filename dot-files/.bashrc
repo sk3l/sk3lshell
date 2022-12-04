@@ -42,7 +42,8 @@ if [[ $? -eq 0 ]];then
 fi
 
 # Dir colors
-eval $(dircolors)
+# See https://github.com/arcticicestudio/nord-dircolors
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 #Git aliases
 git --version > /dev/null 2>&1
