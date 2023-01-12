@@ -70,6 +70,18 @@ if [[ $? -eq 0 ]];then
    alias tmxk="tmux kill-session"
 fi
 
+# Start up ssh-agent using keychain helper
+# https://www.funtoo.org/Funtoo:Keychain
+keychain -V > /dev/null 2>&1
+if [[ $? -eq 0 ]];then
+   # Assume keychain is in path (likely at ~/.local/bin)
+   echo "Found SSH keychain on system; loading keys..."
+   for key in ~/.ssh/*.pem
+   do
+      eval $(keychain --eval --agents ssh $key)
+   done
+fi
+
 # TO DO - source misc utilities, if they exist, or do this in .bashrc_local
 # alias sshk="ssh-keygen"
 # alias luks="sudo cryptsetup"
