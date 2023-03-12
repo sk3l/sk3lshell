@@ -1,19 +1,12 @@
 #
-# ~/.bash_local for work Fedora laptop
+# ~/.bash_local for work Fedora
 #
 
-# Python virtual env
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/Code/M45
-#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-#source /usr/local/bin/virtualenvwrapper.sh
+# Override PS1 prompt (purple host color)
+export PS1='\[\e[1m\e[38;5;46m\]\u\[\e[m\]@\[\e[1m\e[38;5;81m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
 
 # package manager aliases for Fedora
 alias fpm="sudo dnf"
 alias fpg="sudo dnf upgrade"
 alias fpl="sudo dnf list"
-
-# tmux aliases
-alias tmxk="tmux kill-session"
-alias tmxl="tmux list-session"
 
