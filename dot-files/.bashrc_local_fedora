@@ -10,3 +10,16 @@ alias fpm="sudo dnf"
 alias fpg="sudo dnf upgrade"
 alias fpl="sudo dnf list"
 
+# Podman aliases
+podman --version > /dev/null 2>&1
+if [[ $? -eq 0 ]];then
+   echo "Found Podman on system; setting aliases..."
+   alias docker="podman"
+   alias pmli="sudo podman images"
+   alias pmri="sudo podman rmi"
+   alias pmps="sudo podman ps -a"
+   alias pmrm="sudo podman rm"
+   alias pmst="sudo podman start"
+   alias pmsp="sudo podman stop"
+fi
+
