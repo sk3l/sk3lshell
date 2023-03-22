@@ -5,6 +5,12 @@
 # Override PS1 prompt (purple host color)
 export PS1='\[\e[1m\e[38;5;46m\]\u\[\e[m\]@\[\e[1m\e[38;5;81m\]\h\[\e[m\] \[\e[1;37m\]\W $ \[\e[m\]'
 
+# Add $HOME/.local/bin to PATH, if not already present
+if [[ -d $HOME/.local/bin ]] && [[ $(echo $PATH | grep -c "$HOME/.local/bin") -eq "0" ]]; then
+    echo -e "Adding .local/bin to PATH"
+    export PATH="$PATH:$HOME/.local/bin"
+fi
+
 # package manager aliases for Fedora
 alias fpm="sudo dnf"
 alias fpg="sudo dnf upgrade"
